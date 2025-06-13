@@ -1,0 +1,551 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* --------------------Common Css ----------------- */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: url(../images/background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Open Sans", sans-serif;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* --------------------Main Css ----------------- */
+.To-Do_Box {
+  width: 450px;
+  height: 560px;
+  background-color: transparent;
+  border-radius: 7px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  padding: 20px 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: relative;
+  z-index: 999;
+}
+
+/* --------------------To-Do Head ----------------- */
+
+.top_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(90deg, #ff4f4f, #ff6060);
+  z-index: -1;
+  border-bottom-left-radius: 60%;
+  border-bottom-right-radius: 60%;
+
+}
+
+.todo_head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 100px;
+
+  h2 {
+    color: ghostwhite;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  p {
+    font-size: 25px;
+    color: ghostwhite;
+    margin: 0;
+    background: white;
+    padding: 3px 16px;
+    color: #FE5A5B;
+    border-radius: 10px;
+  }
+}
+
+/* --------------------To-Do ADD ----------------- */
+
+.todo_add {
+  width: 100%;
+  background-color: rgba(114, 114, 114, 0.418);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  margin-bottom: 10px;
+
+  input {
+    border: none;
+    outline: none;
+    padding: 16px 14px;
+    width: 100%;
+    background-color: transparent;
+    color: whitesmoke;
+  }
+
+  input::placeholder {
+    color: #eaeaeb;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+  }
+
+  .Subscribe-btn {
+    cursor: pointer;
+    padding: 16px 30px;
+    border: none;
+    outline: none;
+    background-color: #fd5959;
+    border-radius: 20px;
+    color: #eaeaeb;
+    font-weight: 600;
+    font-size: 14px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+
+  .arrow {
+    position: absolute;
+    margin-right: 150px;
+    transition: all 0.3s;
+  }
+
+  .Subscribe-btn:hover {
+    color: #fd5959;
+  }
+
+  .Subscribe-btn:hover .arrow {
+    margin-right: 0;
+    animation: jello-vertical 0.9s both;
+    transform-origin: right;
+  }
+
+  .Subscribe-btn:active {
+    transform: scale(0.9);
+  }
+
+}
+
+hr {
+  margin: 25px 0;
+  border: 1px solid rgba(236, 236, 243, 0.712);
+}
+
+/* --------------------To-Do Content ----------------- */
+
+.todo_list {
+  background-color: rgba(250, 235, 215, 0.486);
+  backdrop-filter: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 5px;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+/* -----------CheckBox Todo Button---------- */
+
+.checkbox-btn {
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 23px;
+  cursor: pointer;
+  margin-left: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-btn input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-btn label {
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border: 2.5px solid #fd5959;
+  transition: .2s linear;
+  border-radius: 7px;
+}
+
+.checkbox-btn input:checked~.checkmark {
+  background-color: transparent;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  left: 50%;
+  top: 40%;
+  width: 10px;
+  height: 14px;
+  border: 2px solid #0ea021;
+  filter: drop-shadow(0px 0px 10px #0ea021);
+  border-width: 0 2.5px 2.5px 0;
+  transition: .2s linear;
+  transform: translate(-50%, -50%) rotate(-90deg) scale(0.2);
+}
+
+.checkbox-btn input:checked~.checkmark:after {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  animation: pulse 1s ease-in;
+}
+
+.checkbox-btn input:checked~.checkmark {
+  transform: rotate(45deg);
+  border: none;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.6);
+  }
+}
+
+
+/* -----------Todo Input---------- */
+
+.todo_list .TodoInputBox {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 15px 10px;
+  background-color: transparent;
+  color: rgb(32, 32, 32);
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.todo_list .slicedThrough {
+  text-decoration: line-through;
+  color: rgba(138, 137, 137, 0.774);
+}
+
+.right_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 5px;
+}
+
+/* -----------Edit Todo Button---------- */
+.editBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(93, 93, 116);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.123);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.editBtn .bx {
+  color: #eaeaeb;
+  font-size: 25px;
+  z-index: 999;
+}
+
+.editBtn .bx:hover {
+  transform: scale(1.1);
+}
+
+.editBtn::before {
+  content: "";
+  width: 200%;
+  height: 200%;
+  background-color: rgb(102, 102, 141);
+  position: absolute;
+  z-index: 1;
+  transform: scale(0);
+  transition: all 0.3s;
+  border-radius: 50%;
+  filter: blur(10px);
+}
+
+.editBtn:hover::before {
+  transform: scale(1);
+}
+
+.editBtn:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.336);
+}
+
+.editBtn svg {
+  height: 15px;
+  fill: white;
+  z-index: 3;
+  transition: all 0.2s;
+  transform-origin: bottom;
+}
+
+.editBtn svg path {
+  d: path("M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z");
+}
+
+.editBtn:hover svg {
+  transform: rotate(-15deg) translateX(5px);
+}
+
+.editBtn::after {
+  content: "";
+  width: 18px;
+  height: 2px;
+  position: absolute;
+  bottom: 13px;
+  left: 0px;
+  background-color: white;
+  border-radius: 2px;
+  z-index: 2;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-out;
+}
+
+.editBtn:hover::after {
+  transform: scaleX(1);
+  left: 0px;
+  transform-origin: right;
+}
+
+.editBtn:active {
+  transform: scale(0.8);
+}
+
+/* -----------Delete Todo Button---------- */
+.bin-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50px;
+  background-color: rgb(255, 95, 95);
+  cursor: pointer;
+  border: 1px solid rgb(255, 201, 201);
+  transition-duration: 0.3s;
+}
+
+.bin-bottom {
+  width: 15px;
+}
+
+.bin-top {
+  width: 17px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+}
+
+.bin-button:hover .bin-top {
+  transform: rotate(45deg);
+}
+
+.bin-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+
+.bin-button:active {
+  transform: scale(0.8);
+}
+
+/* -----------Empty Input Error---------- */
+
+.error {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 320px;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  background: #EF665B;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px -3px #111;
+  position: absolute;
+  top: 33px;
+  right: 15px;
+  display: none;
+  z-index: 999;
+}
+
+.error__icon {
+  width: 20px;
+  height: 20px;
+  transform: translateY(-2px);
+  margin-right: 8px;
+}
+
+.error__icon path {
+  fill: #fff;
+}
+
+.error__title {
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+}
+
+.error__close {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.error__close path {
+  fill: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------------Border Animation ----------------- */
+
+.To-Do_Box .borders span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #4f4f503a, #eaeaeb);
+  animation: animate1 2s linear infinite;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.To-Do_Box .borders span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #4f4f503a, #eaeaeb);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.To-Do_Box .borders span:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #4f4f503a, #eaeaeb);
+  animation: animate3 2s linear infinite;
+}
+
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.To-Do_Box .borders span:nth-child(4) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to top, #4f4f503a, #eaeaeb);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+}
+
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* --------particle js------- */
+#particles-js {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  z-index: 1;
+}
