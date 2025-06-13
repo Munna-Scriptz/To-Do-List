@@ -35,7 +35,7 @@ let HandelButton = () => {
       ClickCount--
       ListCount.innerHTML = 5
 
-      if(ListCount.innerHTML === 0){
+      if (ListCount.innerHTML === 0) {
         NoTask.style = 'display:block;'
       }
     } else {
