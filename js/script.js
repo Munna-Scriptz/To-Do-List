@@ -3,6 +3,7 @@ let TodoBox = document.querySelector('.To-Do_Box')
 let ClickCount = 0
 let ListCount = document.querySelector('.ListCount')
 let InputError = document.querySelector('.error')
+let NoTask = document.querySelector('.no_task')
 // -------------------To-Do Add Doms 
 let AddTodoInput = document.querySelector('.todo_add_input')
 let AddTodoButton = document.querySelector('Subscribe-btn')
@@ -30,11 +31,15 @@ let HandelButton = () => {
     // --------List Count
     ClickCount++
     ListCount.innerHTML = ClickCount
-    if (ClickCount == 6) {
+    if (ClickCount == 6 || ClickCount == 0) {
       ClickCount--
       ListCount.innerHTML = 5
 
+      if(ListCount.innerHTML === 0){
+        NoTask.style = 'display:block;'
+      }
     } else {
+      NoTask.style = 'display:none;'
       // -------------Main ToDo Div
       let TodoList = document.createElement('div') // main todo div
       TodoBox.appendChild(TodoList) // main todo div

@@ -449,11 +449,12 @@ hr {
 }
 
 
-.no_task h1{
-  text-align: center;
-  font-size: 24px;
-  color: #dedee0;
-  margin-top: 150px;
+.no_task h1 {
+    text-align: center;
+    font-size: 24px;
+    text-shadow: .1em 3px 0 rgb(32 32 32 / 41%);
+    color: #dedee0;
+    margin-top: 150px;
 }
 
 
