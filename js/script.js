@@ -4,6 +4,10 @@ let ClickCount = 0
 let ListCount = document.querySelector('.ListCount')
 let InputError = document.querySelector('.error')
 let NoTask = document.querySelector('.no_task')
+let CompletedTodo = 0
+let TickTodo = document.querySelector('.CompletedTodo')
+// ------Tick Dodo
+
 // -------------------To-Do Add Doms 
 let AddTodoInput = document.querySelector('.todo_add_input')
 let AddTodoButton = document.querySelector('Subscribe-btn')
@@ -61,7 +65,35 @@ let HandelButton = () => {
       tickButton.appendChild(CheckSpan)
       CheckSpan.classList.add('checkmark')
       // -------------------------------To-Do Check Box End
+      let ProgressBar = document.querySelector('.progress_bar')
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          CompletedTodo++
+          
+        } else {
+          CompletedTodo--
+        }
+        TickTodo.innerHTML = CompletedTodo
 
+        if(CompletedTodo == 0){
+          ProgressBar.style = 'transform: translateX(-300px);'
+        }
+        if(CompletedTodo == 1){
+          ProgressBar.style = 'transform: translateX(-120px);'
+        }
+        if(CompletedTodo == 2){
+          ProgressBar.style = 'transform: translateX(-100px);'
+        }
+        if(CompletedTodo == 3){
+          ProgressBar.style = 'transform: translateX(-80px);'
+        }
+        if(CompletedTodo == 4){
+          ProgressBar.style = 'transform: translateX(-40px);'
+        }
+        if(CompletedTodo == 5){
+          ProgressBar.style = 'transform: translateX(0px);'
+        }
+      })
       // ---------------------------To-Do Input Start
       let TodoInput = document.createElement('input')
       TodoList.appendChild(TodoInput)
@@ -174,14 +206,46 @@ let HandelButton = () => {
         TodoList.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.36, -0.64, 0.34, 1.76)';
         TodoList.style.opacity = '0';
         TodoList.style.transform = 'scale(0.6) translateY(20px)';
+        if(checkbox.checked){
+          CompletedTodo--
+          TickTodo.innerHTML = CompletedTodo
 
+          if(CompletedTodo == 0){
+          ProgressBar.style = 'transform: translateX(-300px);'
+        }
+        if(CompletedTodo == 1){
+          ProgressBar.style = 'transform: translateX(-120px);'
+        }
+        if(CompletedTodo == 2){
+          ProgressBar.style = 'transform: translateX(-100px);'
+        }
+        if(CompletedTodo == 3){
+          ProgressBar.style = 'transform: translateX(-80px);'
+        }
+        if(CompletedTodo == 4){
+          ProgressBar.style = 'transform: translateX(-40px);'
+        }
+        if(CompletedTodo == 5){
+          ProgressBar.style = 'transform: translateX(0px);'
+        }
+        }
         setTimeout(() => {
           TodoList.remove();
         }, 500);
 
       })
+      // ------------------------tick Button
 
 
+
+      // tickTodoButton.addEventListener('change', () => {
+      //   if (checkbox.checked) {
+      //     CompletedTodo++;
+      //   } else {
+      //     CompletedTodo--;
+      //   }
+      //   TickTodo.innerHTML = CompletedTodo;
+      // });
 
 
 
