@@ -60,7 +60,6 @@ This project helped me deepen my understanding of JavaScript fundamentals, DOM m
 
 📸 Preview
 
-(Insert a screenshot of the running To-Do List UI here to give a visual idea of how it works.)
 
 
 ---
