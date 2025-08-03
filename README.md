@@ -84,4 +84,4 @@ I'd love to hear your feedback or collaborate on improvements:
 
 ✉️ Email: [munnascriptz@gmail.com]
 
-🌐 LinkedIn: [Your LinkedIn Profile]
+🌐 LinkedIn: [Munna scrips]
